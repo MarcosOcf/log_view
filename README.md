@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # LogView
 
 ## Installation
@@ -118,3 +119,7 @@ log_view gem offers four commands
   
 
 
+=======
+log_view
+========
+>>>>>>> f7da612371f38d46e79db3255d6abb820142e5ae
