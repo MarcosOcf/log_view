@@ -1,0 +1,19 @@
+project_name1:
+  user: a
+  password: b
+  servers: 
+    - test-server1
+    - test-server2
+  files:
+    - test-file1
+    - test-file2
+
+project_name2:
+  user: a
+  password: b
+  servers: 
+    - test-server1
+    - test-server2
+  files:
+    - test-file1
+    - test-file2
