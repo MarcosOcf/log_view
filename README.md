@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # LogView
 
 ## Installation
@@ -114,12 +113,3 @@ log_view gem offers four commands
     ```sh
     $ log_view project_name1 -f file1
     ```
-
-
-  
-
-
-=======
-log_view
-========
->>>>>>> f7da612371f38d46e79db3255d6abb820142e5ae
