@@ -9,9 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["marcos.ocf01"]
   spec.email         = ["marcos.ocf01@gmail.com"]
   spec.summary       = %q{log_view is a parallel monitoring logs gem}
-  spec.description   = %q{log_view is a parallel monitoring logs gem who uses ssh connection to make tail on described files in multiple servers.  
-
-  }
+  spec.description   = %q{log_view is a parallel monitoring logs gem who uses ssh connection to make tail on described files in multiple servers}
   spec.homepage      = "https://github.com/MarcosOcf/log_view"
   spec.license       = "MIT"
 
