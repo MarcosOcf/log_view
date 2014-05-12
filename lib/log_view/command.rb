@@ -8,8 +8,8 @@ module LogView
     end
 
     def boot!
-      if @array.nil? or @array.empty?
-        @array.push("-h")
+      if @array.nil? or @array.empty? or @array.include?("-h") or @array.include?("--help")
+        puts help
         return
       end
 
@@ -29,33 +29,33 @@ module LogView
       do_ssh.start
     end
 
-    # private
-    # def help
-    #   array = []
-    #   array << "LogView version #{VERSION}"
-    #   array << "Configuration file at: #{paint_green(Config.config_file_path)}"
-    #   array << "Projects:"
-    #   projects = @config.projects || []
-    #   if projects.empty?
-    #     array << "  No projects configured, please take a look at the configuration file"
-    #   else
-    #     projects.each do |project|
-    #       array << "  - #{project}"
-    #     end
-    #   end
-    #   array << "\nHelp:"
-    #   array << "  $ log_view <project_name>"
-    #   array << "\n"
-    #   array << "  $ log_view <project_name>  --grep <string-name>"
-    #   array << "\n"
-    #   array << "  $ log_view <project_name>  --split-log"
-    #   array << "\n"
-    #   array << "  $ log_view <project_name>  -s <server-name>"
-    #   array << "\n"
-    #   array << "  $ log_view <project_name>  -f <file-name>"
-    #   array << "\n"
-    #   array.join("\n")
-    # end
+    private
+    def help
+      array = []
+      array << "LogView version #{VERSION}"
+      array << "Configuration file at: #{paint_green(Config.config_file_path)}"
+      array << "Projects:"
+      projects = @config.projects || []
+      if projects.empty?
+        array << "  No projects configured, please take a look at the configuration file"
+      else
+        projects.each do |project|
+          array << "  - #{project}"
+        end
+      end
+      array << "\nHelp:"
+      array << "  $ log_view <project_name>"
+      array << "\n"
+      array << "  $ log_view <project_name>  --grep <string-name>"
+      array << "\n"
+      array << "  $ log_view <project_name>  --split-log"
+      array << "\n"
+      array << "  $ log_view <project_name>  -s <server-name>"
+      array << "\n"
+      array << "  $ log_view <project_name>  -f <file-name>"
+      array << "\n"
+      array.join("\n")
+    end
 
   end
 end

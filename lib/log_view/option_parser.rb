@@ -19,6 +19,7 @@ module LogView
       @options.split_log = false
       @options.if_files = false
       @options.if_server = false
+      @options.if_help = false
     end
 
     def new_opt_parser options
@@ -41,6 +42,12 @@ module LogView
           options.if_server = true
           options.server = server
         }
+        opts.on("--help"){
+          options.if_help = true
+        }
+        opts.on("-h"){
+          options.if_help = true 
+        }
       end
     end
 
@@ -50,7 +57,35 @@ module LogView
         create_grep conf
         create_files conf
         create_servers conf
+        puts_help conf if conf.options.if_help == true
       end
+    end
+
+    def puts_help
+      array = []
+      array << "LogView version #{VERSION}"
+      array << "Configuration file at: #{paint_green(Config.config_file_path)}"
+      array << "Projects:"
+      projects = @config.projects || []
+      if projects.empty?
+        array << "  No projects configured, please take a look at the configuration file"
+      else
+        projects.each do |project|
+          array << "  - #{project}"
+        end
+      end
+      array << "\nHelp:"
+      array << "  $ log_view <project_name>"
+      array << "\n"
+      array << "  $ log_view <project_name>  --grep <string-name>"
+      array << "\n"
+      array << "  $ log_view <project_name>  --split-log"
+      array << "\n"
+      array << "  $ log_view <project_name>  -s <server-name>"
+      array << "\n"
+      array << "  $ log_view <project_name>  -f <file-name>"
+      array << "\n"
+      array.join("\n")
     end
 
     def create_grep config
