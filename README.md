@@ -12,11 +12,15 @@ is a parallel monitoring logs gem who uses ssh connection to make tail on descri
 
 ## Getting Started
 
-1. Execute $ log_view
+1. Execute
 
-  The software will create a .log_view.yml file in your home
+```sh
+$ log_view
+```
 
-2. Configure the .log_view.yml file as the described exemple in the .log_view.yml file
+The software will create a **.log_view.yml** file in your home directory
+
+2. Configure the **.log_view.yml** file as the described example in the **.log_view.yml** file
 
 3. Run:
 
@@ -24,13 +28,14 @@ is a parallel monitoring logs gem who uses ssh connection to make tail on descri
 $ log_view
 ```
 
-  This step will show your configured projects.
+This step will show your configured projects.
 
-  Use the described options in the output of third step to perform your
+Use the described options in the output of third step to perform your logs
 
 ```sh
 $ log_view <project-name> <options>
 ```
+
 ## Help
 
 Execute command line without parameters
@@ -38,80 +43,81 @@ Execute command line without parameters
 ```sh
 $ log_view
 ```
+
+or
+
+```sh
+$ log_view -h
+```
+
 ## Basic Commands
 
 log_view gem offers four commands
 
-1. **--split-log**
+### **--split-log**
 
-  The split-log option
+The split-log option. This command will separate log by file and server
+
+```sh
+$ log_view <project_name> --split-log
+```
     
-    This command will separate log by file and server
+### **--grep**
 
-    ```sh
-    $ log_view <project_name> --split-log
-    ```
-2. **--grep**
+The grep option. This is the basic grep function. You should write like:
 
-  The grep option
+```sh
+$ log_view <project_name> --grep <grep_string>
+```
+    
+### **-s**
 
-    This is the basic grep function.
+The choose server option. This command allow you to choose a single server to monitoring
 
-    You should write like:
+```sh
+$ log_view <project_name> -s <server name>
+```
 
-    ```sh
-    $ log_view <project_name> --grep <grep_string>
-    ```
-3. **-s**
+You can write any single parts of server's name. Like this exemple:
 
-  The choose server option
+```yaml
+project_name1:
+user: a
+password: b
+servers: 
+  - test-server1
+  - test-server2
+files:
+  - test-file1
+  - test-file2
+```
 
-    This command allow you to choose a single server to monitoring
+```sh
+$ log_view project_name1 -s server1
+```
 
-    ```sh
-    $ log_view <project_name> -s <server name>
-    ```
+### **-f**
 
-    You can write any single parts of server's name. Like this exemple:
+The choose file option. This command allow you to choose a single file to monitoring
 
-    ```yaml
-    project_name1:
-    user: a
-    password: b
-    servers: 
-      - test-server1
-      - test-server2
-    files:
-      - test-file1
-      - test-file2
-    ```
-    ```sh
-    $ log_view project_name1 -s server1
-    ```
+```sh
+$ log_view <project_name> -f <file name>
+```
 
-4. **-f**
+You can write any single parts of file's name. Like this exemple:
 
-  The choose file option
+```yaml
+project_name1:
+user: a
+password: b
+servers: 
+  - test-server1
+  - test-server2
+files:
+  - test-file1
+  - test-file2
+```
 
-    This command allow you to choose a single file to monitoring
-
-    ```sh
-    $ log_view <project_name> -f <file name>
-    ```
-
-    You can write any single parts of file's name. Like this exemple:
-
-    ```yaml
-    project_name1:
-    user: a
-    password: b
-    servers: 
-      - test-server1
-      - test-server2
-    files:
-      - test-file1
-      - test-file2
-    ```
-    ```sh
-    $ log_view project_name1 -f file1
-    ```
+```sh
+$ log_view project_name1 -f file1
+```
