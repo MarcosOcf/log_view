@@ -1,5 +1,7 @@
 # LogView
 
+is a parallel monitoring logs gem who uses ssh connection to make tail on described files in multiple servers
+
 ## Installation
   
   Execute 
