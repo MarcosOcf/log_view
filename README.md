@@ -18,9 +18,23 @@ is a parallel monitoring logs gem who uses ssh connection to make tail on descri
 $ log_view
 ```
 
-The software will create a **.log_view.yml** file in your home directory
+The software will create a **.log_view.yml** file in your home directory with a sample configuration
 
 2. Configure the **.log_view.yml** file as the described example in the **.log_view.yml** file
+
+```sh
+# This is a sample, please fill the options with your own configurations
+# :)
+#
+# project_name:
+#   user: my_ssh_user
+#   password: my_ssh_password
+#   servers:
+#     - some_name@some_server.com
+#   files:
+#     - "/log/dir/my_log_file.log"
+#
+```
 
 3. Run:
 
@@ -28,9 +42,7 @@ The software will create a **.log_view.yml** file in your home directory
 $ log_view
 ```
 
-This step will show your configured projects.
-
-Use the described options in the output of third step to perform your logs
+This step will show your configured projects. Use your configured projects to perform your logs
 
 ```sh
 $ log_view <project-name> <options>
@@ -50,9 +62,9 @@ or
 $ log_view -h
 ```
 
-## Basic Commands
+## Params
 
-log_view gem offers four commands
+log_view gem offers some extra params
 
 ### **--split-log**
 
