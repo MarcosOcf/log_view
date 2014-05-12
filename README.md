@@ -110,7 +110,7 @@ log_view gem offers four commands
     files:
       - test-file1
       - test-file2
-    ``
+    ```
     ```sh
     $ log_view project_name1 -f file1
     ```
