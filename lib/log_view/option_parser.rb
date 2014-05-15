@@ -20,6 +20,8 @@ module LogView
       @options.if_files = false
       @options.if_server = false
       @options.if_help = false
+      @options.if_grepv = false
+      @options.if_n = false
     end
 
     def new_opt_parser options
@@ -27,6 +29,10 @@ module LogView
         opts.on("--grep","--grep string", String) {|grep|
           options.grep = true
           options.grep_string = grep
+        }
+        opts.on("--grep-v", "--grep-v string", String){ |grep|
+          options.grep_v = true
+          options.grep_v_string = grep
         }
 
         opts.on("--split-log") {
@@ -48,13 +54,19 @@ module LogView
         opts.on("-h"){
           options.if_help = true 
         }
+        opts.on("-n","--n string", String){ |line_number|
+          options.if_n = true
+          options.line_numbers = line_number
+        }
       end
     end
 
     def generate_config config
       config.tap do |conf|
         conf.options = @options
+        create_n_lines conf
         create_grep conf
+        create_grepv conf
         create_files conf
         create_servers conf
         puts_help conf if conf.options.if_help == true
@@ -88,8 +100,16 @@ module LogView
       array.join("\n")
     end
 
-    def create_grep config
+    def create_n_lines config
       config.grep_string = ""
+      config.grep_string << " -n #{config.options.line_numbers}" if config.options.if_n
+    end
+
+    def create_grepv config
+      config.grep_string << " | grep -v #{config.options.grep_v_string}" if config.options.grep_v
+    end
+
+    def create_grep config
       config.grep_string << " | grep --color=always #{config.options.grep_string}" if config.options.grep
     end
 

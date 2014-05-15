@@ -22,11 +22,34 @@ describe LogView::OptParser do
   end
 
   describe "#parse" do
+    describe "with -n test" do
+      let :args do
+        [project_name, '-n', '100']
+      end
+
+      subject do
+        LogView::OptParser.new.parse(args, config.load_project(project_name))
+      end
+
+      it "should create a string with -n args" do
+        subject.grep_string.should eql " -n 100"
+      end
+    end
+
     
     it "grep test" do
       subject.grep_string.should eql " | grep --color=always string"
     end
+    describe "with --grep-v option" do
+      
+      let :args do
+        [project_name, '--grep', 'string', '--grep-v', 'string', '--split-log', '-s', 'test-server1', '-f', 'test-file1']
+      end
 
+      it "grep-v test"  do
+        subject.grep_string.should eql " | grep --color=always string | grep -v string"
+      end
+    end
     it "split-log test" do
       subject.options.split_log.should eql true
     end
@@ -45,8 +68,8 @@ describe LogView::OptParser do
 
     describe 'choosing inexistent' do
       let :args do
-        [project_name, '--grep', 'string', '--split-log', '-s', 'test-server10', '-f', 'test-file10'] 
-      end   
+        [project_name, '--grep', 'string', '--split-log', '-s', 'test-server10', '-f', 'test-file10']
+      end
 
       it 'file test' do
         subject.options.if_files.should eql true
@@ -56,6 +79,14 @@ describe LogView::OptParser do
       it 'server test' do
         subject.options.if_server.should eql true
         subject.options.server.should eql 'test-server10'
+      end
+    end
+    describe 'using all options' do
+      let :args do
+        [project_name, '-n', '100', '--grep', 'string', '--grep-v', 'string', '--split-log', '-s', 'test-server1', '-f', 'test-file1']
+      end
+      it "should start with all choosen options" do
+        subject.grep_string.should eql " -n 100 | grep --color=always string | grep -v string"
       end
     end
   end

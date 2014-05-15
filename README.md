@@ -1,6 +1,5 @@
+<<<<<<< HEAD
 # LogView
-
-is a parallel monitoring logs gem who uses ssh connection to make tail on described files in multiple servers
 
 ## Installation
   
@@ -12,29 +11,11 @@ is a parallel monitoring logs gem who uses ssh connection to make tail on descri
 
 ## Getting Started
 
-1. Execute
+1. Execute $ log_view
 
-```sh
-$ log_view
-```
+  The software will create a .log_view.yml file in your home
 
-The software will create a **.log_view.yml** file in your home directory with a sample configuration
-
-2. Configure the **.log_view.yml** file as the described example in the **.log_view.yml** file
-
-```sh
-# This is a sample, please fill the options with your own configurations
-# :)
-#
-# project_name:
-#   user: my_ssh_user
-#   password: my_ssh_password
-#   servers:
-#     - some_name@some_server.com
-#   files:
-#     - "/log/dir/my_log_file.log"
-#
-```
+2. Configure the .log_view.yml file as the described exemple in the .log_view.yml file
 
 3. Run:
 
@@ -42,13 +23,15 @@ The software will create a **.log_view.yml** file in your home directory with a 
 $ log_view
 ```
 
-This step will show your configured projects. Use your configured projects to perform your logs
+  This step will show your configured projects.
+
+  Use the described options in the output of third step to perform your
 
 ```sh
 $ log_view <project-name> <options>
 ```
-
 ## Help
+
 
 Execute command line without parameters
 
@@ -56,80 +39,89 @@ Execute command line without parameters
 $ log_view
 ```
 
-or
+## Basic Commands
 
-```sh
-$ log_view -h
-```
+log_view gem offers four commands
 
-## Params
+1. **--split-log**
 
-log_view gem offers some extra params
-
-### **--split-log**
-
-The split-log option. This command will separate log by file and server
-
-```sh
-$ log_view <project_name> --split-log
-```
+  The split-log option
     
-### **--grep**
+    This command will separate log by file and server
 
-The grep option. This is the basic grep function. You should write like:
+    ```sh
+    $ log_view <project_name> --split-log
+    ```
+2. **--grep**
 
-```sh
-$ log_view <project_name> --grep <grep_string>
-```
-    
-### **-s**
+  The grep option
 
-The choose server option. This command allow you to choose a single server to monitoring
+    This is the basic grep function.
 
-```sh
-$ log_view <project_name> -s <server name>
-```
+    You should write like:
 
-You can write any single parts of server's name. Like this exemple:
+    ```sh
+    $ log_view <project_name> --grep <grep_string>
+    ```
+3. **-s**
 
-```yaml
-project_name1:
-user: a
-password: b
-servers: 
-  - test-server1
-  - test-server2
-files:
-  - test-file1
-  - test-file2
-```
+  The choose server option
 
-```sh
-$ log_view project_name1 -s server1
-```
+    This command allow you to choose a single server to monitoring
 
-### **-f**
+    ```sh
+    $ log_view <project_name> -s <server name>
+    ```
 
-The choose file option. This command allow you to choose a single file to monitoring
+    You can write any single parts of server's name. Like this exemple:
 
-```sh
-$ log_view <project_name> -f <file name>
-```
+    ```yaml
+    project_name1:
+    user: a
+    password: b
+    servers: 
+      - test-server1
+      - test-server2
+    files:
+      - test-file1
+      - test-file2
+    ```
+    ```sh
+    $ log_view project_name1 -s server1
+    ```
 
-You can write any single parts of file's name. Like this exemple:
+4. **-f**
 
-```yaml
-project_name1:
-user: a
-password: b
-servers: 
-  - test-server1
-  - test-server2
-files:
-  - test-file1
-  - test-file2
-```
+  The choose file option
 
-```sh
-$ log_view project_name1 -f file1
-```
+    This command allow you to choose a single file to monitoring
+
+    ```sh
+    $ log_view <project_name> -f <file name>
+    ```
+
+    You can write any single parts of file's name. Like this exemple:
+
+    ```yaml
+    project_name1:
+    user: a
+    password: b
+    servers: 
+      - test-server1
+      - test-server2
+    files:
+      - test-file1
+      - test-file2
+    ```
+    ```sh
+    $ log_view project_name1 -f file1
+    ```
+
+
+  
+
+
+=======
+log_view
+========
+>>>>>>> f7da612371f38d46e79db3255d6abb820142e5ae
