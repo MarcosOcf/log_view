@@ -3,7 +3,7 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'log_view/version'
 
-Gem::Specification.new 'log_view', '0.2.0' do |spec|
+Gem::Specification.new 'log_view', '2.0' do |spec|
   spec.name          = "log_view"
   spec.version       = LogView::VERSION
   spec.authors       = ["marcos.ocf01"]

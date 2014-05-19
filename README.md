@@ -63,7 +63,18 @@ log_view gem offers four commands
     ```sh
     $ log_view <project_name> --grep <grep_string>
     ```
-3. **-s**
+
+3. **--grep-v**
+  
+  Selected lines are those not matching any of the specified patterns. (grep -v description)
+
+    You should write like:
+
+    ```sh
+    $ log_view <project_name> --grep-v <string_to_not_match>
+    ```
+
+4. **-s**
 
   The choose server option
 
@@ -90,7 +101,7 @@ log_view gem offers four commands
     $ log_view project_name1 -s server1
     ```
 
-4. **-f**
+5. **-f**
 
   The choose file option
 
@@ -116,12 +127,19 @@ log_view gem offers four commands
     ```sh
     $ log_view project_name1 -f file1
     ```
+6. **-n**
 
+  The -n argument display the latest 'n' input lines
 
-  
+    You should write like this:
+
+    ```sh
+    $ log_view project_name1 -n <number_of_lines>
+    ```
+
 
 
 =======
 log_view
 ========
->>>>>>> f7da612371f38d46e79db3255d6abb820142e5ae
+
