@@ -106,11 +106,11 @@ module LogView
     end
 
     def create_grepv config
-      config.grep_string << " | grep -v #{config.options.grep_v_string}" if config.options.grep_v
+      config.grep_string << " | grep -v '#{config.options.grep_v_string}'" if config.options.grep_v
     end
 
     def create_grep config
-      config.grep_string << " | grep --color=always #{config.options.grep_string}" if config.options.grep
+      config.grep_string << " | grep --color=always '#{config.options.grep_string}'" if config.options.grep
     end
 
     def create_files config

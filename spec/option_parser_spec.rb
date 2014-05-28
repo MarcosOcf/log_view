@@ -36,20 +36,45 @@ describe LogView::OptParser do
       end
     end
 
-    
-    it "grep test" do
-      subject.grep_string.should eql " | grep --color=always string"
+    describe "in grep test" do
+      it "with a single word" do
+        subject.grep_string.should eql " | grep --color=always 'string'"
+      end
+      
+      describe "with a sentence separeted by spaces" do
+        let :args do
+          [project_name, '--grep', 'string to not match']
+        end
+        subject do
+          LogView::OptParser.new.parse(args, config.load_project(project_name))
+        end
+        it "shoud return a string result" do
+          subject.grep_string.should eql " | grep --color=always 'string to not match'"
+        end
+      end
+
     end
+
     describe "with --grep-v option" do
       
       let :args do
-        [project_name, '--grep', 'string', '--grep-v', 'string', '--split-log', '-s', 'test-server1', '-f', 'test-file1']
+        [project_name, '--grep', 'string', '--grep-v', 'string']
       end
-
-      it "grep-v test"  do
-        subject.grep_string.should eql " | grep --color=always string | grep -v string"
+      describe "with a single word given" do
+        it "grep-v test"  do
+          subject.grep_string.should eql " | grep --color=always 'string' | grep -v 'string'"
+        end
+      end
+      describe "with a given sentence" do
+        let :args do
+          [project_name, '--grep', 'string to match', '--grep-v', 'string to not match']
+        end
+        it "grep-v test"  do
+          subject.grep_string.should eql " | grep --color=always 'string to match' | grep -v 'string to not match'"
+        end
       end
     end
+
     it "split-log test" do
       subject.options.split_log.should eql true
     end
@@ -86,7 +111,7 @@ describe LogView::OptParser do
         [project_name, '-n', '100', '--grep', 'string', '--grep-v', 'string', '--split-log', '-s', 'test-server1', '-f', 'test-file1']
       end
       it "should start with all choosen options" do
-        subject.grep_string.should eql " -n 100 | grep --color=always string | grep -v string"
+        subject.grep_string.should eql " -n 100 | grep --color=always 'string' | grep -v 'string"
       end
     end
   end
