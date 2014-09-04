@@ -1,4 +1,4 @@
-# LogView [![Code Climate](https://codeclimate.com/github/MarcosOcf/log_view/badges/gpa.svg)](https://codeclimate.com/github/MarcosOcf/log_view)
+# LogView [![Code Climate](https://codeclimate.com/github/MarcosOcf/log_view/badges/gpa.svg)](https://codeclimate.com/github/MarcosOcf/log_view) [![Gem Version](https://badge.fury.io/rb/log_view.svg)](http://badge.fury.io/rb/log_view)
 
 ## Installation
   
