@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# LogView
+# LogView [![Code Climate](https://codeclimate.com/github/MarcosOcf/log_view/badges/gpa.svg)](https://codeclimate.com/github/MarcosOcf/log_view)
 
 ## Installation
   
