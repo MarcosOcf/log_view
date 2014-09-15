@@ -15,6 +15,16 @@
   The software will create a .log_view.yml file in your home
 
 2. Configure the .log_view.yml file as the described exemple in the .log_view.yml file
+  
+  ```yaml
+  project_name:
+    user: my_ssh_user
+    password: my_ssh_password
+    servers:
+      - some_name@some_server.com
+    files:
+      - "/log/dir/my_log_file.log"
+  ```
 
 3. Run:
 
@@ -30,7 +40,6 @@ $ log_view
 $ log_view <project-name> <options>
 ```
 ## Help
-
 
 Execute command line without parameters
 
@@ -135,10 +144,3 @@ log_view gem offers four commands
     ```sh
     $ log_view project_name1 -n <number_of_lines>
     ```
-
-
-
-=======
-log_view
-========
-

@@ -22,7 +22,7 @@ module LogView
     def initialize
       path = Config.config_file_path
       File.open(path, "w") {|f| f.write(CONFIG_SAMPLE)} unless File.exists?(path)
-
+      
       hash = YAML.load_file(path)
       @projects = hash ? hash.keys : []
       @config = OpenStruct.new(hash)

@@ -111,7 +111,7 @@ describe LogView::OptParser do
         [project_name, '-n', '100', '--grep', 'string', '--grep-v', 'string', '--split-log', '-s', 'test-server1', '-f', 'test-file1']
       end
       it "should start with all choosen options" do
-        subject.grep_string.should eql " -n 100 | grep --color=always 'string' | grep -v 'string"
+        subject.grep_string.should eql " -n 100 | grep --color=always 'string' | grep -v 'string'"
       end
     end
   end

@@ -55,38 +55,6 @@ describe LogView::DoSSH do
       end
     end
   end
-
-  describe "start function" do
-    
-    # let :obj_config do
-    #   OpenStruct.new
-    # end
-
-    # let :files do
-    #   ["test-file1", "test-file2"]
-    # end
-
-    # let :servers do
-    #   ["test-server1", "test-server2"]
-    # end
-
-    # before do
-    #   Net::SSH.stub(:start) do |server, user, hash|
-    #     puts "===========> ei"
-    #     puts [server, user, hash].inspect
-        
-    #   end
-    
-    #   obj_config.servers = servers
-    # end
-
-    it "should receive execute command" do
-      # subject.should_receive(:execute_command)
-      # subject.start
-      pending
-    end
-
-  end
 end
 
 

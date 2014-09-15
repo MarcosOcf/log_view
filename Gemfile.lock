@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    log_view (0.2.0)
+    log_view (0.2.1)
       net-ssh (~> 2.8.0)
 
 GEM
